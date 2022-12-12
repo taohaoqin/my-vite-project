@@ -2,6 +2,7 @@
 import { defineComponent, ref, reactive, h, resolveComponent } from "vue"
 import { useStore } from "vuex"
 export default defineComponent({
+  name: "layout",
   setup() {
     const store = useStore()
     // let msg = ref("moyu")
@@ -57,7 +58,11 @@ export default defineComponent({
         <>
           <div class="layout">
             <div class="left">
-              <el-menu class="el-menu-vertical-demo" onSelect={handlSelect}>
+              <el-menu 
+                class="el-menu-vertical-demo" 
+                router={true}
+                onSelect={handlSelect}
+              >
                 {renderMenu(menuList)}
               </el-menu>
             </div>

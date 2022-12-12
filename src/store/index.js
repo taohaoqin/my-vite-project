@@ -6,18 +6,23 @@ export default createStore({
       {
         text: "一级菜单",
         icon: "Menu",
+        url: "/two",
         children: [
           {
             text: "二级节点",
-            url: "1-1",
+            url: "/two",
+            name: 'two',
+            leaf: true,
           },
           {
             text: "二级菜单",
-            url: "1-4",
+            url: "/three",
             children: [
               {
                 text: "三级节点",
-                url: "1-4-1",
+                url: "/three",
+                name: 'three',
+                leaf: true,
               },
             ],
           },
@@ -25,8 +30,10 @@ export default createStore({
       },
       {
         text: "一级节点",
-        url: "page2",
+        url: "/one",
         icon: "Grid",
+        name: 'one',
+        leaf: true,
       },
     ],
   },
@@ -34,12 +41,12 @@ export default createStore({
     menu: (state) => state.menu,
   },
   mutations: {
-    SET_MENU(state, menu) {
+    SET_MENU (state, menu) {
       state.menu = menu
     },
   },
   actions: {
-    SET_MENU(context, menu) {
+    SET_MENU (context, menu) {
       context.commit("SET_MENU", menu)
     },
   },
