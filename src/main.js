@@ -4,15 +4,16 @@ import router from "./router"
 // import { addRoutes } from "@/router/generatorRouters.js"
 import store from "./store"
 import App from "./App.vue"
-import ElementPlus from "element-plus"
-import "element-plus/dist/index.css"
-import * as ElementPlusIconsVue from "@element-plus/icons-vue"
+import { Menu, Grid } from "@element-plus/icons-vue"
+import { path } from '@/utils'
+
+console.log(path('./vue.svg'))
 
 const app = createApp(App)
 
 app.use(router)
 app.use(store)
-app.use(ElementPlus)
+// app.use(ElementPlus)
 
 // 设置全局变量
 // app.config.globalProperties.$f = () => {
@@ -25,7 +26,5 @@ app.use(ElementPlus)
 //     console.log(proxy.$variable)
 
 app.mount("#app")
-
-for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
-  app.component(key, component)
-}
+app.component(Menu.name, Menu)
+app.component(Grid.name, Grid)

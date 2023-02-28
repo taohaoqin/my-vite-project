@@ -78,9 +78,14 @@ export default defineComponent({
 </script>
 <style lang="scss">
 .layout {
+  width: 100%;
+  height: 100%;
   display: flex;
   .left {
     width: 220px;
+    .el-menu {
+      height: 100%;
+    }
   }
   .right {
     width: calc(100% - 220px);
