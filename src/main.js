@@ -5,9 +5,9 @@ import router from "./router"
 import store from "./store"
 import App from "./App.vue"
 import { Menu, Grid } from "@element-plus/icons-vue"
-import { path } from '@/utils'
+// import { path } from '@/utils'
 
-console.log(path('./vue.svg'))
+// console.log(path('./vue.svg'))
 
 const app = createApp(App)
 
