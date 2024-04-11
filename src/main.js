@@ -1,5 +1,6 @@
 import { createApp } from "vue"
 import "./style.css"
+import "jsmind/style/jsmind.css"
 import router from "./router"
 // import { addRoutes } from "@/router/generatorRouters.js"
 import store from "./store"
