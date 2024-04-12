@@ -12,7 +12,7 @@ export default defineComponent({
     let menuList = store.state.menu
 
     function handlSelect(index) {
-      console.log(index, "select")
+      // console.log(index, "select")
     }
 
     function renderIcon(icon) {
