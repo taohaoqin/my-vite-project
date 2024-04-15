@@ -1,5 +1,6 @@
 import jsmind from 'jsmind';
 import 'jsmind/screenshot'
+// import { toPng } from 'html-to-image';
 
 class JSMind {
   constructor (options) {
@@ -12,11 +13,11 @@ class JSMind {
       const isRoot = (item) => {
         return item.isroot
       }
-      const rootId = id || list.filter(isRoot)[0].id
+      const rootId = id || list.filter(isRoot)[ 0 ].id
       if (!rootId) {
         throw new Error('rootId 不存在')
       }
-      const ary = [...list]
+      const ary = [ ...list ]
       const children = ary.filter(item => item.parentid === rootId)
       let w = 'left'
       ary.forEach((item) => {
@@ -26,8 +27,8 @@ class JSMind {
           w = w === 'left' ? 'right' : 'left'
         }
         const color = randomColor()
-        item['background-color'] = color
-        item['leading-line-color'] = color
+        item[ 'background-color' ] = color
+        item[ 'leading-line-color' ] = color
       })
       return ary
     }
@@ -69,6 +70,28 @@ class JSMind {
   }
   exportImage () {
     this.jm.shoot();
+    // 不支持import 'jsmind/screenshot'的时候用html-to-image手动实现
+    // const dom = document.getElementById(this.jm.options.container);
+    // toPng(dom)
+    //   .then(function (dataUrl) {
+    //     var img = new Image();
+    //     img.onload = function () {
+    //       var canvas = document.createElement('canvas');
+    //       canvas.width = img.width;
+    //       canvas.height = img.height;
+    //       var ctx = canvas.getContext('2d');
+    //       ctx.drawImage(img, 0, 0);
+    //       var a = document.createElement('a');
+    //       a.href = canvas.toDataURL('image/png');
+    //       a.download = 'jsmind.png';
+    //       a.click();
+    //     }
+    //     img.src = dataUrl;
+
+    //   })
+    //   .catch(function (error) {
+    //     console.error('转换失败:', error);
+    //   });
   }
 }
 
