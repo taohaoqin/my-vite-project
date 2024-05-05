@@ -2,7 +2,7 @@
 function deepClone (value) {
   const cache = new WeakMap()
   function _deepClone (value) {
-    if (typeof value === 'object' || value === null) {
+    if (typeof value !== 'object' || value === null) {
       return value
     }
     if (cache.has(value)) {
