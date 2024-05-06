@@ -17,7 +17,6 @@
 <script setup>
 import JSMind from '@/utils/jsmind'
 import { onMounted } from 'vue';
-
 const mindData = [
   { topic: '标签', id: '1', isroot: true },
   { topic: '标签1', id: '2', parentid: '1' },
@@ -88,12 +87,14 @@ onMounted(() => {
     container: 'jsmind',
     list: mindData
   })
+  console.log(jm)
 })
 </script>
 <style>
 #jsmind {
-  width: 100%;
-  height: 90%;
+  background: antiquewhite;
+  width: 1000px;
+  height: 900px;
 }
 jmexpander {
   line-height: 8px;
