@@ -20,14 +20,14 @@ let myRequest = (function () {
     let promise = Promise.resolve()
     function cache (result = { go: true }) {
       if (mem[url]) {
-        return Promise.resolve({ go: false, type: 'then' data: mem[url] })
+        return Promise.resolve({ go: false, type: 'then', data: mem[url] })
       } else {
-        return Promise.resolve({ go: true, type: 'then' data: null })
+        return Promise.resolve({ go: true, type: 'then', data: null })
       }
     }
     function noRequest (result = { go: true }) {
       if (hasRequest.includes(url)) {
-        return Promise.reject({ go: false, type: 'catch' data: '请求已经提交' })
+        return Promise.reject({ go: false, type: 'catch', data: '请求已经提交' })
       } else {
         hasRequest.push(url)
         return Promise.resolve({ go: true, type: 'then' })
