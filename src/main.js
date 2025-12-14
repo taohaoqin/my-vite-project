@@ -2,7 +2,8 @@ import { createApp } from "vue"
 import "./style.css"
 import "jsmind/style/jsmind.css"
 import router from "./router"
-// import { addRoutes } from "@/router/generatorRouters.js"
+import 'element-plus/dist/index.css'  // 引入完整样式
+
 import store from "./store"
 import App from "./App.vue"
 import { Menu, Grid } from "@element-plus/icons-vue"
