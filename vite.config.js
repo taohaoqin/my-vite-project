@@ -6,11 +6,13 @@ import { visualizer } from 'rollup-plugin-visualizer'; // 进行打包分析
 import AutoImport from 'unplugin-auto-import/vite' // 自动导入
 import Components from 'unplugin-vue-components/vite' // 自动导入
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers' // 自动导入
+// import preloadImages from './plugin/preloadImages'
+import preloadSrcImages from './plugin/preloadSrcImages'
 // import viteMatePublic from './plugin/viteMatePublic'
 
 // https://vitejs.dev/config/
 
-function pathResolve(dir) {
+function pathResolve (dir) {
   return resolve(process.cwd(), '.', dir)
 }
 
@@ -18,11 +20,24 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    // preloadImages({
+    //   dir: 'img/*.{jpg,jpeg,png,gif}',
+    //   attrs: {
+    //     rel: 'prefetch',
+    //   }
+    // }),
+
+    preloadSrcImages({
+      dir: 'src/assets/**/*.{jpg,jpeg,png}',
+      attrs: {
+        rel: 'prefetch',
+      }
+    }),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ ElementPlusResolver() ],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ ElementPlusResolver() ],
     }),
 
     // viteMatePublic()
@@ -42,10 +57,12 @@ export default defineConfig({
         replacement: pathResolve('src')
       },
     ],
-    dedupe: ['vue']
+    dedupe: [ 'vue' ]
   },
+  base: './',
   build: {
     rollupOptions: {
+      external: [],
       output: {
         manualChunks: id => {
           // 将element中的代码单独打包
@@ -59,11 +76,12 @@ export default defineConfig({
         }
       },
     },
-    // outDir: 'public',
-    assetsDir: 'static', // 静态资源的存放路径
+
+    // outDir: 'output',
+    // assetsDir: 'static', // 静态资源的存放路径
     cssCodeSplit: true, // CSS 代码拆分
     assetsInlineLimit: 4096 * 10, // 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 0 可以完全禁用此项。
-    chunkSizeWarningLimit: 1024 // 规定触发警告的 chunk 大小。（以 kbs 为单位）
+    chunkSizeWarningLimit: 1024 // 规定 触发警告的 chunk 大小。（以 kbs 为单位）
   },
   server: {
     host: true,

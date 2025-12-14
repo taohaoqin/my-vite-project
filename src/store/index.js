@@ -54,6 +54,12 @@ export default createStore({
         icon: "Grid",
         name: 'six',
         leaf: true,
+      }, {
+        text: "七级节点",
+        url: "/seven",
+        icon: "Grid",
+        name: 'seven',
+        leaf: true,
       }
     ],
   },
