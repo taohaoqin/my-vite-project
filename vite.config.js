@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite' // 自动导入
 import Components from 'unplugin-vue-components/vite' // 自动导入
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers' // 自动导入
 // import preloadImages from './plugin/preloadImages'
-import preloadSrcImages from './plugin/preloadSrcImages'
+// import preloadSrcImages from './plugin/preloadSrcImages'
 // import viteMatePublic from './plugin/viteMatePublic'
 
 // https://vitejs.dev/config/
@@ -27,17 +27,17 @@ export default defineConfig({
     //   }
     // }),
 
-    preloadSrcImages({
-      dir: 'src/assets/**/*.{jpg,jpeg,png}',
-      attrs: {
-        rel: 'prefetch',
-      }
-    }),
+    // preloadSrcImages({
+    //   dir: 'src/assets/**/*.{jpg,jpeg,png}',
+    //   attrs: {
+    //     rel: 'prefetch',
+    //   }
+    // }),
     AutoImport({
-      resolvers: [ ElementPlusResolver() ],
+      resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ ElementPlusResolver() ],
+      resolvers: [ElementPlusResolver()],
     }),
 
     // viteMatePublic()
@@ -57,9 +57,9 @@ export default defineConfig({
         replacement: pathResolve('src')
       },
     ],
-    dedupe: [ 'vue' ]
+    dedupe: ['vue']
   },
-  base: './',
+  // base: './',
   build: {
     rollupOptions: {
       external: [],
